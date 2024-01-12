@@ -1,0 +1,36 @@
+/* HomeScreen exit */
+.home-screen-exit {
+    animation: flyAway 1s forwards;
+}
+
+@keyframes flyAway {
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+/* SearchScreen enter */
+.search-screen-enter {
+    animation: moveIn 1s forwards;
+}
+
+@keyframes moveIn {
+    from {
+        transform: translateY(100vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    /* Same as HomeScreen */
+    height: 100vh;
+    text-align: center;
+}
