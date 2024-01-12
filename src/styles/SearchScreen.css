@@ -1,48 +1,67 @@
 /* SearchScreen.css */
 
-
-
-.search-title {
-    font-size: 2rem;
-    color: #003366;
-    /* Similar to HomeScreen */
-    margin-bottom: 0.5em;
-}
-
-.search-form {
+.search-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
-    /* Adjust as needed */
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f4f4f4;
+    /* or any color that matches your theme */
+}
+
+.search-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #003366;
+    /* or any color that matches your theme */
+}
+
+.search-form {
+    width: 100%;
+    max-width: 400px;
+    /* adjust as necessary */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* spacing between form items */
 }
 
 .search-input {
     padding: 10px;
-    border-radius: 5px;
     border: 1px solid #ccc;
-    /* Light border for inputs */
+    /* subtle border */
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 .search-button {
-    background-color: #ff704d;
-    /* Warm accent color, same as HomeScreen */
-    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    background-color: #ff704d;
+    /* your theme's accent color */
+    color: white;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .search-button:hover {
-    background-color: #ff5722;
-    /* Darker shade on hover */
+    background-color: #e6603b;
+    /* slightly darker on hover */
 }
 
-/* Responsive adjustments as necessary */
-@media (max-width: 600px) {
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
     .search-form {
         width: 90%;
+    }
+
+    .search-input,
+    .search-button {
+        font-size: 0.9rem;
+        /* slightly smaller font on smaller screens */
     }
 }
