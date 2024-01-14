@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import '../styles/LoadingScreen.css';
 
 const LoadingScreen = () => {
     return (
@@ -10,9 +11,9 @@ const LoadingScreen = () => {
             transition={{ duration: 0.5 }}
             className="loading-screen"
         >
-            <div className="loading-content">
+            <div className="loading-screen">
+                <div className="spinner"></div>
                 <p>Loading...</p>
-                {/* Here you can add a spinner or any loading animation */}
             </div>
         </motion.div>
     );
