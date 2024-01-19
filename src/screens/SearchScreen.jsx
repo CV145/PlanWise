@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import '../styles/SearchScreen.css';
 import LoadingScreen from './LoadingScreen';
 import { searchPlans } from '../services/api';
+import ResultsScreen from './ResultsScreen';
 
 const states = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
@@ -111,7 +112,7 @@ const SearchScreen = () => {
         return <LoadingScreen />
     }
     else if (showResults) {
-        return <ResultsScreen data={results} />;
+        return <ResultsScreen plans={results.plans} />;
     }
     else {
         return (

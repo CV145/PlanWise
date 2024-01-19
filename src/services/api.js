@@ -1,47 +1,39 @@
 //Handles API requests to Marketplace API
 
-const API_KEY = ""; // Replace with your API key
+const API_KEY = "";
 
 export async function searchPlans(searchParams) {
-    const API_KEY = "your_api_key_here"; // Replace with your actual API key
+
     const url = `https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=${API_KEY}`;
     const headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'apikey': 'U52FZtIuwfk0nLf3dIXiZV5js6OQCSHh'
     };
 
     // Provide default values for the parameters not included in searchParams
     const body = {
-        aptc_override: searchParams.aptc_override || 0,
         household: {
-            effective_date: searchParams.household?.effective_date || new Date().toISOString().split('T')[0],
-            has_married_couple: searchParams.household?.has_married_couple || false,
-            income: searchParams.household?.income || 0,
-            unemployment_received: searchParams.household?.unemployment_received || 'None',
-            people: searchParams.household?.people || [{
-                age: 30,
-                dob: '1990-01-01',
-                aptc_eligible: true,
-                does_not_cohabitate: false,
-                gender: "Male",
-                has_mec: false,
-                is_parent: false,
-                is_pregnant: false,
-                relationship: "Self",
-                uses_tobacco: false,
-                utilization: "Medium"
-            }]
+            income: 52000,
+            people: [
+                {
+                    age: 27,
+                    aptc_eligible: true,
+                    gender: 'Female',
+                    uses_tobacco: false
+                }
+            ]
         },
-        market: searchParams.market || "Individual",
+        market: 'Individual',
         place: {
-            countyfips: searchParams.place?.countyfips || "",
-            state: searchParams.place?.state || "",
-            zipcode: searchParams.place?.zipcode || ""
+            countyfips: '37057',
+            state: 'NC',
+            zipcode: '27360'
         },
-        year: searchParams.year || new Date().getFullYear()
+        year: 2019
     };
 
     try {
-        const response = await fetch(url, {
+        const response = await fetch('http://localhost:3000/api/plans/search', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body)

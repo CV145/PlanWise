@@ -1,0 +1,89 @@
+.plan-card {
+    width: auto;
+    /* Allows the card to expand based on content */
+    max-width: 100%;
+    /* Ensures it doesn't exceed the parent container's width */
+    box-sizing: border-box;
+    /* Includes padding and border in the element's total width */
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    background-color: #f9f9f9;
+    /* Light background */
+    color: #333;
+    /* Dark text for contrast */
+}
+
+.plan-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.plan-card-title {
+    color: #0056b3;
+    /* A pop of color for the title */
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.plan-card-content {
+    font-size: 1rem;
+    color: #666;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Adjust minmax values */
+    gap: 10px;
+    padding: 10px;
+    /* Ensure padding doesn't cause overflow */
+
+    /* Medium screens - 2 columns */
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+        .plan-card {
+            width: 100%;
+            /* Full width on smaller screens */
+            margin: 10px 0;
+            /* Adjust margin for smaller screens */
+        }
+
+        .benefits-grid {
+            grid-template-columns: 1fr;
+            /* Single column layout for smaller screens */
+        }
+    }
+
+
+    /* Large screens - 3 columns */
+    @media (min-width: 900px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+.benefit-section {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0;
+    /* Adjust margin to prevent overflow */
+
+    word-wrap: break-word;
+}
+
+.cost-sharing-detail {
+    background-color: #eef2f7;
+    /* Slightly different background for details */
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
