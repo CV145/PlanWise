@@ -28,19 +28,24 @@ const ResultsScreen = ({ plans, onBack }) => {
 
 
     return (
-        <div className="results-container">
-            <button onClick={onBack} className="back-button">Back to Search</button>
-            <FilterOptions
-                onFilterChange={handleFilterChange}
-                onResetFilters={handleResetFilters}
-            />
-            {filteredPlans.length > 0 ? (
-                filteredPlans.map(plan => (
-                    <PlanCard key={plan.id} plan={plan} />
-                ))
-            ) : (
-                <p>No plans found matching your criteria.</p>
-            )}
+        <div className="results-layout">
+            <div className='sidebar'>
+                <button onClick={onBack} className="back-button">Back to Search</button>
+                <FilterOptions
+                    onFilterChange={handleFilterChange}
+                    onResetFilters={handleResetFilters}
+                />
+            </div>
+
+            <div className='main-content'>
+                {filteredPlans.length > 0 ? (
+                    filteredPlans.map(plan => (
+                        <PlanCard key={plan.id} plan={plan} />
+                    ))
+                ) : (
+                    <p>No plans found matching your criteria.</p>
+                )}
+            </div>
         </div>
     );
 };

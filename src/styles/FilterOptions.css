@@ -1,49 +1,67 @@
 .filter-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    background-color: #fff;
+    /* Matching the theme */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    /* Consistent with the search form width */
 }
 
-.filter-options form {
+.filter-group {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-}
-
-.filter-input {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .filter-label {
-    margin-right: 5px;
+    font-size: 0.9rem;
+    /* Reduce font size */
     font-weight: bold;
+    margin-bottom: 5px;
+    color: #003366;
+    /* Matching the search screen title color */
+}
+
+.filter-input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    /* Space between inputs */
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 .filter-button {
-    padding: 10px 15px;
+    padding: 8px 15px;
     border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    border-radius: 5px;
+    background-color: #ff704d;
+    /* Matching the search button color */
     color: white;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .filter-button:hover {
-    background-color: #0056b3;
+    background-color: #e6603b;
+    /* Hover effect similar to the search button */
 }
 
-.filter-button.reset {
-    background-color: #dc3545;
-}
+/* Adjustments for smaller screens, if necessary */
+@media (max-width: 768px) {
 
-.filter-button.reset:hover {
-    background-color: #c82333;
+    .filter-input,
+    .filter-button {
+        font-size: 0.8rem;
+        /* Further reduce font size for smaller screens */
+    }
 }
