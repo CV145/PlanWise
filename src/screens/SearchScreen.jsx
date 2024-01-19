@@ -84,7 +84,9 @@ const SearchScreen = () => {
         }
     };
 
-
+    const handleBack = () => {
+        setShowResults(false);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -112,7 +114,7 @@ const SearchScreen = () => {
         return <LoadingScreen />
     }
     else if (showResults) {
-        return <ResultsScreen plans={results.plans} />;
+        return <ResultsScreen plans={results.plans} onBack={handleBack} />;
     }
     else {
         return (
