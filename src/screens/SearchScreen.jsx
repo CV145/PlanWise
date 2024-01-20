@@ -31,6 +31,7 @@ const SearchScreen = () => {
             state: '',
             zipCode: '',
             income: '',
+            formattedIncome: '',
             tobacco: false,
         });
 
@@ -63,13 +64,16 @@ const SearchScreen = () => {
                 [name]: checked
             }));
         } else if (name === "income") {
-            // Income formatting logic
-            const numericValue = value.replace(/[^\d]/g, '').slice(0, 7);
+            // Remove non-digit characters for raw income
+            const numericValue = value.replace(/[^\d]/g, '');
+
+            // Format the display value with commas
             const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
             setSearchParams(prevParams => ({
                 ...prevParams,
-                [name]: formattedValue
+                income: numericValue, // Store raw numeric value
+                formattedIncome: formattedValue // Store formatted value for display
             }));
         } else {
             setSearchParams(prevParams => ({
@@ -196,13 +200,12 @@ const SearchScreen = () => {
                     <input
                         name="income"
                         type="text"
-                        pattern="\d*"
-                        value={searchParams.income}
+                        value={searchParams.formattedIncome}
                         onChange={handleChange}
                         className="search-input"
                         placeholder="Annual Income"
                         min="0"
-                        maxLength={7}
+                        maxLength={10}
                     />
 
                     <label htmlFor="tobacco">Used tobacco in the past 12 months:</label>

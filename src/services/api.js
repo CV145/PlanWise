@@ -58,7 +58,6 @@ export async function searchPlans(searchParams) {
     const url = `http://localhost:3000/api/plans/search`;
     const headers = {
         'Content-Type': 'application/json',
-        'apikey': 'U52FZtIuwfk0nLf3dIXiZV5js6OQCSHh'
     };
 
     // Calculate age from DOB
@@ -78,7 +77,7 @@ export async function searchPlans(searchParams) {
                     age: searchParams.dob ? calculateAge(searchParams.dob) : '', // Default age
                     aptc_eligible: true, // Assuming always true for simplicity
                     gender: searchParams.gender || '', // Default gender
-                    uses_tobacco: searchParams.tobacco || false // Default tobacco usage
+                    uses_tobacco: searchParams.tobacco
                 }
             ]
         },
