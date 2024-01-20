@@ -64,8 +64,12 @@ const FilterOptions = ({ onFilterChange, onResetFilters }) => {
                     <input type="number" name="outOfPocketMax.min" value={filters.outOfPocketMax.min} onChange={handleInputChange} className="filter-input" />
                     <input type="number" name="outOfPocketMax.max" value={filters.outOfPocketMax.max} onChange={handleInputChange} className="filter-input" />
                 </div>
-                <button type="submit" className="filter-button">Apply Filters</button>
-                <button type="button" onClick={handleReset} className="filter-button reset">Reset Filters</button>
+
+                <div className="filter-buttons">
+                    <button type="submit" className="filter-button">Apply Filters</button>
+                    <button type="button" onClick={handleReset} className="filter-button reset">Reset Filters</button>
+                </div>
+
             </form>
 
         </div>

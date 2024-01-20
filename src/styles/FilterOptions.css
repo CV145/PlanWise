@@ -37,10 +37,12 @@
 .filter-buttons {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .filter-button {
-    padding: 8px 15px;
+    padding: 10px 20px;
+    margin-right: 10px;
     border: none;
     border-radius: 5px;
     background-color: #ff704d;
@@ -49,6 +51,11 @@
     font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+}
+
+.filter-button.reset {
+    margin-right: 0;
+    /* Remove margin for the last button */
 }
 
 .filter-button:hover {
@@ -63,5 +70,22 @@
     .filter-button {
         font-size: 0.8rem;
         /* Further reduce font size for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .filter-buttons {
+        flex-direction: column;
+    }
+
+    .filter-button {
+        margin-right: 0;
+        margin-bottom: 10px;
+        /* Add space below each button */
+    }
+
+    .filter-button.reset {
+        margin-bottom: 0;
+        /* Remove margin for the last button */
     }
 }

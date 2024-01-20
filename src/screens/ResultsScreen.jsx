@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PlanCard from '../components/PlanCard';
 import FilterOptions from '../components/FilterOptions';
 import '../styles/ResultsScreen.css';
+import InsuranceInfo from '../components/InsuranceInfo';
 
 const ResultsScreen = ({ plans, onBack }) => {
     const [filteredPlans, setFilteredPlans] = useState(plans);
@@ -29,8 +30,9 @@ const ResultsScreen = ({ plans, onBack }) => {
 
     return (
         <div className="results-layout">
+
             <div className='sidebar'>
-                <button onClick={onBack} className="back-button">Back to Search</button>
+                <button onClick={onBack} className="back-button">&#8592;</button>
                 <FilterOptions
                     onFilterChange={handleFilterChange}
                     onResetFilters={handleResetFilters}
@@ -38,6 +40,7 @@ const ResultsScreen = ({ plans, onBack }) => {
             </div>
 
             <div className='main-content'>
+                <InsuranceInfo />
                 {filteredPlans.length > 0 ? (
                     filteredPlans.map(plan => (
                         <PlanCard key={plan.id} plan={plan} />

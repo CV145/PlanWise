@@ -1,0 +1,16 @@
+.insurance-info {
+    margin: 20px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.insurance-info h3 {
+    margin-bottom: 10px;
+}
+
+.insurance-info p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
