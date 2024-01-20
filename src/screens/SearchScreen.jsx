@@ -13,15 +13,6 @@ const states = [
     'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
 
-const abbrv = [
-    'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
-    'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
-    'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
-    'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
-    'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
-];
-
-
 
 const SearchScreen = () => {
     const variants = {
@@ -30,14 +21,18 @@ const SearchScreen = () => {
     };
 
 
-    const [searchParams, setSearchParams] = useState({
-        gender: 'Male',
-        dob: '',
-        state: '',
-        zipCode: '',
-        income: '',
-        tobacco: false,
-    });
+    // Initialize state with values from local storage if available
+    const savedSearchParams = JSON.parse(localStorage.getItem('searchParams'));
+    const [searchParams, setSearchParams] = useState(
+        savedSearchParams ||
+        {
+            gender: 'Male',
+            dob: '',
+            state: '',
+            zipCode: '',
+            income: '',
+            tobacco: false,
+        });
 
     const [isLoading, setIsLoading] = useState(false);
     const [results, setResults] = useState(null);
@@ -97,6 +92,9 @@ const SearchScreen = () => {
 
         // Use incomeValue for further processing or API calls
         console.log({ ...searchParams, income: incomeValue });
+
+        // Save search parameters to local storage
+        localStorage.setItem('searchParams', JSON.stringify(searchParams));
 
         try {
             const data = await searchPlans(searchParams);
