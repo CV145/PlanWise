@@ -14,3 +14,27 @@
     margin-bottom: 10px;
     line-height: 1.6;
 }
+
+.insurance-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.insurance-info-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    /* Add some padding at the bottom */
+}
+
+.toggle-button {
+    /* Your button styles */
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

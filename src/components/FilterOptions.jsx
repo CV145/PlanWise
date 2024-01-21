@@ -3,11 +3,11 @@ import '../styles/FilterOptions.css';
 
 const FilterOptions = ({ onFilterChange, onResetFilters }) => {
     const [filters, setFilters] = useState({
-        premiumMax: 1000,
-        deductibleMax: 5000,
-        copayMax: 100,
-        coinsuranceMax: 30, // Assuming percentage
-        outOfPocketMax: 10000
+        premiumMax: numberWithCommas("1000"),
+        deductibleMax: numberWithCommas("5000"),
+        copayMax: numberWithCommas("100"),
+        coinsuranceMax: numberWithCommas("30"), // Assuming percentage
+        outOfPocketMax: numberWithCommas("10000")
     });
 
     const handleInputChange = (e) => {
@@ -20,17 +20,17 @@ const FilterOptions = ({ onFilterChange, onResetFilters }) => {
     };
 
 
-
     const handleReset = () => {
         setFilters({
-            premium: { min: 0, max: 1000 },
-            deductible: { min: 0, max: 5000 },
-            copay: { max: 100 },
-            coinsurance: { max: 30 },
-            outOfPocketMax: { min: 0, max: 10000 }
+            premiumMax: numberWithCommas("1000"),
+            deductibleMax: numberWithCommas("5000"),
+            copayMax: numberWithCommas("100"),
+            coinsuranceMax: numberWithCommas("30"), // Assuming percentage
+            outOfPocketMax: numberWithCommas("10000")
         });
         onResetFilters();
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
