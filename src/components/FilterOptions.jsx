@@ -3,24 +3,23 @@ import '../styles/FilterOptions.css';
 
 const FilterOptions = ({ onFilterChange, onResetFilters }) => {
     const [filters, setFilters] = useState({
-        premium: { min: 0, max: 1000 },
-        deductible: { min: 0, max: 5000 },
-        copay: { max: 100 },
-        coinsurance: { max: 30 }, // Assuming percentage
-        outOfPocketMax: { min: 0, max: 10000 }
+        premiumMax: 1000,
+        deductibleMax: 5000,
+        copayMax: 100,
+        coinsuranceMax: 30, // Assuming percentage
+        outOfPocketMax: 10000
     });
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        const [filter, key] = name.split('.');
+        const formattedValue = numberWithCommas(value.replace(/,/g, ''));
         setFilters(prevFilters => ({
             ...prevFilters,
-            [filter]: {
-                ...prevFilters[filter],
-                [key]: value
-            }
+            [name]: formattedValue
         }));
     };
+
+
 
     const handleReset = () => {
         setFilters({
@@ -38,32 +37,36 @@ const FilterOptions = ({ onFilterChange, onResetFilters }) => {
         onFilterChange(filters);
     };
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+
     return (
         <div className="filter-options">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label className="filter-label">Premium Range:</label>
-                    <input type="number" name="premium.min" value={filters.premium.min} onChange={handleInputChange} className="filter-input" />
-                    <input type="number" name="premium.max" value={filters.premium.max} onChange={handleInputChange} className="filter-input" />
+                    <label className="filter-label">Max Premium:</label>
+                    <input type="text" name="premiumMax" value={filters.premiumMax} onChange={handleInputChange} className="filter-input" />
                 </div>
                 <div>
-                    <label className="filter-label">Deductible Range:</label>
-                    <input type="number" name="deductible.min" value={filters.deductible.min} onChange={handleInputChange} className="filter-input" />
-                    <input type="number" name="deductible.max" value={filters.deductible.max} onChange={handleInputChange} className="filter-input" />
+                    <label className="filter-label">Max Deductible:</label>
+                    <input type="text" name="deductibleMax" value={filters.deductibleMax} onChange={handleInputChange} className="filter-input" />
                 </div>
                 <div>
                     <label className="filter-label">Max Copay:</label>
-                    <input type="number" name="copay.max" value={filters.copay.max} onChange={handleInputChange} className="filter-input" />
+                    <input type="text" name="copayMax" value={filters.copayMax} onChange={handleInputChange} className="filter-input" />
                 </div>
                 <div>
                     <label className="filter-label">Max Coinsurance (%):</label>
-                    <input type="number" name="coinsurance.max" value={filters.coinsurance.max} onChange={handleInputChange} className="filter-input" />
+                    <input type="text" name="coinsuranceMax" value={filters.coinsuranceMax} onChange={handleInputChange} className="filter-input" />
                 </div>
                 <div>
-                    <label className="filter-label">Out-of-Pocket Maximum Range:</label>
-                    <input type="number" name="outOfPocketMax.min" value={filters.outOfPocketMax.min} onChange={handleInputChange} className="filter-input" />
-                    <input type="number" name="outOfPocketMax.max" value={filters.outOfPocketMax.max} onChange={handleInputChange} className="filter-input" />
+                    <label className="filter-label">Max Out-of-Pocket:</label>
+                    <input type="text" name="outOfPocketMax" value={filters.outOfPocketMax} onChange={handleInputChange} className="filter-input" />
                 </div>
+
+
 
                 <div className="filter-buttons">
                     <button type="submit" className="filter-button">Apply Filters</button>
